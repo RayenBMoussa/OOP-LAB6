@@ -79,18 +79,18 @@ public class Main
         //Predicate — test conditions on HockeyPlayer objects
 
         final Predicate<HockeyPlayer> isForward;
-        isForward = player -> "F".equalsIgnoreCase(player.getPosition());
-
-        final int maxGoals;
-        maxGoals = 20;
-
         final Predicate<HockeyPlayer> has20Plus;
+        final int maxGoals;
+
+        isForward = player -> "F".equalsIgnoreCase(player.getPosition());
+        maxGoals = 20;
         has20Plus = player -> player.getGoals() >= maxGoals;
 
+
         System.out.println("Forwards with 20+ goals:");
-        for (HockeyPlayer player : roster)
+
+        for (final HockeyPlayer player : roster)
         {
-            // Testing both predicates
             if (isForward.test(player) && has20Plus.test(player))
             {
                 System.out.println("  " + player.getName() + " — " + player.getGoals() + "G");
