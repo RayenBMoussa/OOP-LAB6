@@ -21,5 +21,6 @@ public interface EligibilityRule
      * @param currentYear  the current year used for age calculation
      * @return true or false depending on eligibility
      */
-    boolean test(HockeyPlayer player, int minAge, int minGoals, int currentYear);
+    boolean test(final HockeyPlayer player, final int minAge,
+                 final int minGoals, final int currentYear);
 }

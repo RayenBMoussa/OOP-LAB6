@@ -27,7 +27,7 @@ public class Main
      */
     private static HockeyTeam sampleTeam()
     {
-        List<HockeyPlayer> players;
+        final List<HockeyPlayer> players;
         players = new ArrayList<>();
 
         players.add(new HockeyPlayer("Alex Morgan", "F", 2002, 21));
@@ -37,7 +37,7 @@ public class Main
         players.add(new HockeyPlayer("Eva Chen", "D", 2001, 5));
         players.add(new HockeyPlayer("Frank Liu", "F", 1998, 12));
 
-        HockeyTeam team;
+        final HockeyTeam team;
         team = new HockeyTeam("BCIT Blizzards", players);
         return team;
     }
@@ -49,13 +49,13 @@ public class Main
      */
     public static void main(final String[] args)
     {
+        final HockeyTeam team;
+        final List<HockeyPlayer> roster;
         int currentYear;
+
+
         currentYear = 2025;
-
-        HockeyTeam team;
         team = sampleTeam();
-
-        List<HockeyPlayer> roster;
         roster = team.getRoster();
 
         System.out.println("Team: " + team.getName());
@@ -66,7 +66,7 @@ public class Main
 
         // Supplier — creates and returns a new HockeyPlayer instance
 
-        Supplier<HockeyPlayer> callUp;
+        final Supplier<HockeyPlayer> callUp;
         callUp = () -> new HockeyPlayer("Jordan Park", "F", 2003, 3);
 
         roster.add(callUp.get());
@@ -78,13 +78,13 @@ public class Main
 
         //Predicate — test conditions on HockeyPlayer objects
 
-        Predicate<HockeyPlayer> isForward;
+        final Predicate<HockeyPlayer> isForward;
         isForward = player -> "F".equalsIgnoreCase(player.getPosition());
 
         final int maxGoals;
         maxGoals = 20;
 
-        Predicate<HockeyPlayer> has20Plus;
+        final Predicate<HockeyPlayer> has20Plus;
         has20Plus = player -> player.getGoals() >= maxGoals;
 
         System.out.println("Forwards with 20+ goals:");
@@ -100,20 +100,19 @@ public class Main
 
         //Function — transforms a HockeyPlayer into a descriptive string
 
-        Function<HockeyPlayer, String> playerLabel;
+        final Function<HockeyPlayer, String> playerLabel;
         playerLabel = player -> String.format("%s — %dG", player.getName(), player.getGoals());
 
         System.out.println("Player labels:");
         for (HockeyPlayer player : roster)
         {
-            // Apply the function and print the resulting string
             System.out.println("  " + playerLabel.apply(player));
         }
         System.out.println();
 
         //Consumer — prints each player’s name
 
-        Consumer<HockeyPlayer> printName;
+        final Consumer<HockeyPlayer> printName;
         printName = player -> System.out.println(player.getName());
 
         System.out.println("Roster names (Consumer):");
@@ -122,19 +121,21 @@ public class Main
 
         // 5) UnaryOperator — converts player names to uppercase
 
-        UnaryOperator<String> toUpper;
+        final UnaryOperator<String> toUpper;
         toUpper = text -> text.toUpperCase();
 
         System.out.println("Roster names (uppercase):");
+
         for (HockeyPlayer player : roster)
         {
             System.out.println("  " + toUpper.apply(player.getName()));
         }
+
         System.out.println();
 
         //Comparator — sorts players by goals (descending)
 
-        Comparator<HockeyPlayer> byGoalsDesc;
+        final Comparator<HockeyPlayer> byGoalsDesc;
         byGoalsDesc = (a, b) -> Integer.compare(b.getGoals(), a.getGoals());
 
         Collections.sort(roster, byGoalsDesc);
@@ -159,19 +160,19 @@ public class Main
 
         //Custom Functional Interface — EligibilityRule
 
-        EligibilityRule rule;
+        final EligibilityRule rule;
         rule = (player, minAge, minGoals, year) ->
         {
-            int age;
+            final int age;
             age = year - player.getYearOfBirth();
 
             return age >= minAge && player.getGoals() >= minGoals;
         };
 
-        int minAge;
+        final int minAge;
         minAge = 20;
 
-        int minGoals;
+        final int minGoals;
         minGoals = 15;
 
         System.out.println("Eligible players (age >= " +
@@ -182,7 +183,7 @@ public class Main
         {
             if (rule.test(player, minAge, minGoals, currentYear))
             {
-                int age;
+                final int age;
                 age = currentYear - player.getYearOfBirth();
 
                 System.out.println("  " + player.getName() +

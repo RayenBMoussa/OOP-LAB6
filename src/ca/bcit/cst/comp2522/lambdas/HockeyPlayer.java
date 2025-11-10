@@ -26,7 +26,8 @@ public class HockeyPlayer
      * @param goals       the number of goals scored
      * @throws IllegalArgumentException if any argument fails validation
      */
-    public HockeyPlayer(String name, String position, int yearOfBirth, int goals)
+    public HockeyPlayer(final String name, final String position,
+                        final int yearOfBirth, final int goals)
     {
         validateName(name);
         validatePosition(position);
@@ -47,7 +48,7 @@ public class HockeyPlayer
      * @param name the name to validate
      * @throws IllegalArgumentException if the name is not valid
      */
-    private void validateName(String name)
+    private void validateName(final String name)
     {
         if (name == null || name.trim().isEmpty())
         {
@@ -61,7 +62,7 @@ public class HockeyPlayer
      * @param position the position to validate
      * @throws IllegalArgumentException if the position is not valid
      */
-    private void validatePosition(String position)
+    private void validatePosition(final String position)
     {
         if (position == null ||
                 !(position.equals("F") ||
@@ -78,7 +79,7 @@ public class HockeyPlayer
      * @param yearOfBirth the year to validate
      * @throws IllegalArgumentException if the year is not valid
      */
-    private void validateYearOfBirth(int yearOfBirth)
+    private void validateYearOfBirth(final int yearOfBirth)
     {
         final int maxYear;
         final int minYear;
@@ -100,7 +101,7 @@ public class HockeyPlayer
      * @param goals the goal count to validate
      * @throws IllegalArgumentException if goals is not valid
      */
-    private void validateGoals(int goals)
+    private void validateGoals(final int goals)
     {
         final int minGoals;
         minGoals = 0;

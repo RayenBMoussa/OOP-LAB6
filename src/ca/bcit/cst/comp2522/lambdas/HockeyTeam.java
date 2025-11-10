@@ -22,7 +22,7 @@ public class HockeyTeam
      * @param roster the list of players
      * @throws IllegalArgumentException if any argument fails validation
      */
-    public HockeyTeam(String name, List<HockeyPlayer> roster)
+    public HockeyTeam(final String name, final List<HockeyPlayer> roster)
     {
         validateName(name);
         validateRoster(roster);
@@ -37,7 +37,7 @@ public class HockeyTeam
      * @param name the team name to validate
      * @throws IllegalArgumentException if the name is not valid
      */
-    private void validateName(String name)
+    private void validateName(final String name)
     {
         if (name == null || name.trim().isEmpty())
         {
@@ -51,7 +51,7 @@ public class HockeyTeam
      * @param roster the list of players to validate
      * @throws IllegalArgumentException if the roster is not valid
      */
-    private void validateRoster(List<HockeyPlayer> roster)
+    private void validateRoster(final List<HockeyPlayer> roster)
     {
         if (roster == null || roster.isEmpty())
         {
